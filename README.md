@@ -27,6 +27,13 @@ Para instalar as dependências, execute o comando:
 
 ``` npm install ```
 
+Para instalar o Chromium
+
+```
+sudo apt-get update && \
+sudo apt-get install -y chromium-browser libnss3-dev libfreetype6-dev libharfbuzz-dev libfontconfig1-dev fonts-freefont-ttf
+```
+
 ## Execução
 
 Para iniciar a API, execute o comando:
