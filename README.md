@@ -45,3 +45,7 @@ A API estará disponível em `http://localhost:<PORT>/pdf`, onde `<PORT>` é o n
 ## Uso
 
 Para enviar um arquivo HTML para conversão, faça uma requisição POST para a URL `http://localhost:<PORT>/pdf`, passando o arquivo no corpo da requisição com a chave file. O servidor irá retornar um arquivo PDF em formato base64.
+
+Header
+
+``` Content-Type: ultipart/form-data```
