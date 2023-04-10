@@ -48,4 +48,4 @@ Para enviar um arquivo HTML para conversão, faça uma requisição POST para a 
 
 Header
 
-``` Content-Type: ultipart/form-data```
+``` Content-Type: multipart/form-data```
