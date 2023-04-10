@@ -4,11 +4,14 @@ export class Converter {
     async convertHtmlToPdf(htmlBuffer) {
         const browser = await Puppeteer.launch({
             executablePath: '/usr/bin/chromium-browser',
+            headless: true,
             args: [
+                '--single-process', 
+                '--no-zygote', 
                 '--no-sandbox',
                 '--disable-setuid-sandbox'
             ]
-        });
+        })
 
         const page = await browser.newPage();
 
