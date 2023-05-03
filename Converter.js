@@ -1,17 +1,21 @@
-import Puppeteer from 'puppeteer-core';
+import Puppeteer from 'puppeteer';
 
 export class Converter {
     async convertHtmlToPdf(htmlBuffer) {
+        
+        process.env['PUPPETEER_EXECUTABLE_PATH'] = '/usr/bin/chromium-browser';
+
         const browser = await Puppeteer.launch({
-            executablePath: '/usr/bin/chromium-browser',
-            headless: true,
+            // executablePath: '/usr/bin/chromium-browser',
+            headless: false,
             args: [
-                '--single-process', 
-                '--no-zygote', 
-                '--no-sandbox',
-                '--disable-setuid-sandbox'
-            ]
-        })
+              '--single-process', 
+              '--no-zygote', 
+              '--no-sandbox',
+              '--disable-setuid-sandbox'
+            ],
+            dumpio: true
+        });
 
         const page = await browser.newPage();
 
@@ -29,9 +33,9 @@ export class Converter {
 
         const pdf = await page.pdf({
             format: process.env.PDF_FORMAT,
-            scale: process.env.PDF_SCALE,
+            scale: +process.env.PDF_SCALE,
             margin: this.getMarginProperties(),
-            printBackground: process.env.PDF_BACKGROUND
+            printBackground: JSON.parse(process.env.PDF_BACKGROUND)
         });
 
         await browser.close();
