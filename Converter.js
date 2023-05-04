@@ -6,15 +6,12 @@ export class Converter {
         process.env['PUPPETEER_EXECUTABLE_PATH'] = '/usr/bin/chromium-browser';
 
         const browser = await Puppeteer.launch({
-            // executablePath: '/usr/bin/chromium-browser',
-            headless: false,
             args: [
               '--single-process', 
               '--no-zygote', 
               '--no-sandbox',
               '--disable-setuid-sandbox'
             ],
-            dumpio: true
         });
 
         const page = await browser.newPage();
