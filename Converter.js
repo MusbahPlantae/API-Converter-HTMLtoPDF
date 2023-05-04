@@ -2,10 +2,9 @@ import Puppeteer from 'puppeteer';
 
 export class Converter {
     async convertHtmlToPdf(htmlBuffer) {
-        
-        process.env['PUPPETEER_EXECUTABLE_PATH'] = '/usr/bin/chromium-browser';
 
         const browser = await Puppeteer.launch({
+            headless: 'new',
             args: [
               '--single-process', 
               '--no-zygote', 
